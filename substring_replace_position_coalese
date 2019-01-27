@@ -1,0 +1,11 @@
+SELECT department, REPLACE(department, 'Clothing','Attire') modified_data
+FROM departments
+
+SELECT department, department || ' department' modified_dept
+FROM departments
+
+SELECT SUBSTRING(email,POSITION('@' IN email) + 1)
+FROM employees
+
+SELECT COALESCE(email, 'NONE') as email
+from employees
