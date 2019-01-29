@@ -1,0 +1,57 @@
+SELECT * from employees
+
+SELECT UPPER(first_name) FROM employees
+
+SELECT UPPER(first_name),LOWER(department) FROM employees
+
+SELECT UPPER(first_name),LENGTH(last_name),LOWER(department) FROM employees
+
+SELECT ' helllo there  '
+
+SELECT TRIM('      HELLO WORLD    ')
+
+SELECT LENGTH(TRIM('      HELLO WORLD    '))
+				   
+SELECT first_name || last_name FROM employees
+				   
+SELECT first_name || ' ' last_name FROM employees
+
+SELECT first_name || ' ' || last_name FROM employees				   
+
+SELECT first_name || last_name full_name FROM employees
+				   
+SELECT first_name || last_name full_name, (salary > 140000) FROM employees
+ 				   
+SELECT first_name ||' ' || last_name full_name, (salary > 140000) 
+FROM employees
+
+SELECT first_name ||' ' || last_name full_name, (salary > 140000) 
+FROM employees
+ORDER BY salary desc	
+				   
+SELECT department, ('clothing' IN (department, first_name))
+FROM employees	
+								   
+SELECT first_name ||' ' || last_name full_name, (salary > 140000) is_here
+FROM employees	
+								   
+SELECT department, ('clothing' IN (department, first_name))
+FROM employees								   
+						
+SELECT department, ('Clothing' IN (department, first_name))
+FROM employees		
+								   
+SELECT department, (department like '%oth%') FROM employees 
+								   
+SELECT department, (department like '%oth%') ask FROM employees 
+		
+SELECT department, (department like '%oth%') ask FROM employees 
+								   
+SELECT department, (department like '%oth%') ask FROM employees 
+								   
+SELECT SUBSTRING('This is test daata' FROM 9 FOR 4) test_data_ex	
+								   
+SELECT SUBSTRING('This is test daata' FROM 4) test_data_ex
+								   
+							   
+				   
