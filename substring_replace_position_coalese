@@ -4,6 +4,7 @@ FROM departments
 SELECT department, department || ' department' modified_dept
 FROM departments
 
+-- Extract domain name from the email address
 SELECT SUBSTRING(email,POSITION('@' IN email) + 1)
 FROM employees
 
