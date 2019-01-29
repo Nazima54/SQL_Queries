@@ -1,0 +1,13 @@
+Select student_name FROM students
+WHERE age BETWEEN 18 AND 20
+
+Select student_name,age FROM students
+WHERE age BETWEEN 18 AND 20
+
+SELECT student_name from Students
+WHERE student_name like '%ch%'
+OR  student_name like '%nd'
+
+SELECT student_name,age FROM students
+WHERE student_name like '%ae%' OR student_name like '%ph%'
+AND  age != 19
