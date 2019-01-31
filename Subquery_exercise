@@ -1,0 +1,47 @@
+--SUbquery  Exercise
+-- Create a table dupes
+CREATE TABLE dupes (id integer, name VARCHAR(10));
+
+INSERT INTO dupes VALUES(1,'FRANK');
+INSERT INTO dupes VALUES(2,'FRANK');
+INSERT INTO dupes VALUES(3,'ROBERT');											 
+INSERT INTO dupes VALUES(4,'ROBERT');	
+INSERT INTO dupes VALUES(5,'SAM');
+INSERT INTO dupes VALUES(6,'FRANK');	
+INSERT INTO dupes VALUES(7,'PETER');	
+						
+-- Display each name with its id just once											 
+SELECT * FROM dupes
+WHERE id IN (
+SELECT MIN(id)
+FROM dupes
+GROUP BY name)
+											 
+SELECT min(id),name FROM dupes
+GROUP BY name
+
+-- DELETE the repeated vaues from the table
+DELETE FROM dupes
+WHERE id NOT IN (
+SELECT min(id)
+FROM dupes
+GROUP BY name)											 
+SELECT * FROM dupes			
+											 
+-- Find the average of the employees, but excluding highest and lowest salary
+SELECT ROUND(AVG(SALARY)) FROM employees	
+WHERE salary NOT IN (
+(SELECT MAX(salary) FROM employees),
+(SELECT MIN(salary) FROM employees ))
+	 
+
+
+												 
+											 
+
+											 
+											 
+											 
+											 
+											 
+											 
