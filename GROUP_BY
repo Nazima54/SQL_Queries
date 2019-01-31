@@ -1,0 +1,62 @@
+-- Check total salary paid by each deparment
+SELECT department,SUM(salary)
+FROM employees
+WHERE 1 = 1
+GROUP BY department
+
+-- Check total salary paid by each deparment wr t region_id
+SELECT department,SUM(salary)
+FROM employees
+WHERE region_id in(4,5,6,7)
+GROUP BY department
+
+-- Count number of employees in each department
+SELECT department,COUNT(employee_id) FROM employees
+GROUP BY department
+--OR
+SELECT department,COUNT(*) FROM employees
+GROUP BY department
+
+-- FInd min, max and avg salary by department
+SELECT department,COUNT(*) total_no_employees,
+MAX(salary) max_salary,
+MIN(salary) min_salary, 
+AVG(salary) avg_salary
+FROM employees
+GROUP BY department
+ORDER BY total_no_employees DESC 
+
+-- FInd count of male and female employees in each department.
+SELECT department,gender,COUNT(*)
+FROM employees
+GROUP BY department, gender
+ORDER BY department
+
+-- look into the dept that has more then 35 employees
+SELECT department, COUNT(*)
+FROM employees
+GROUP BY department HAVING COUNT(*) > 35
+ORDER BY department
+
+
+-- COUNT no of people with the same first_name in the department
+SELECT first_name, COUNT(*)
+FROM employees
+GROUP BY first_name
+HAVING COUNT(*) > 1
+
+-- Get the unique departments in the employees table
+SELECT department FROM employees
+GROUP BY department 
+
+---- Give email domain names and no of employees working on that domain
+SELECT  SUBSTRING(email, POSITION('@'IN email) + 1), COUNT(*) FROM employees
+WHERE email is NOT NULL
+GROUP BY SUBSTRING(email, POSITION('@'IN email) + 1)
+ORDER BY COUNT(*) DESC
+
+--- Show min, max and avg salary broken down by region and gender
+SELECT gender, region_id, MIN(salary), MAX(salary),round(AVG(salary)) FROM employees
+GROUP BY gender, region_id
+ORDER BY gender,region_id ASC
+
