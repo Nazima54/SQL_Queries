@@ -1,8 +1,4 @@
--- Check total salary paid by each deparment
-SELECT department,SUM(salary)
-FROM employees
-WHERE 1 = 1
-GROUP BY department
+
 
 -- Check total salary paid by each deparment wr t region_id
 SELECT department,SUM(salary)
