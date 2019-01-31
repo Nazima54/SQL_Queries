@@ -1,0 +1,59 @@
+-- Subqueries ANY and ALL
+-- ANY and ALL can be used with WHERE or HAVING clause
+-- Give all the employees assigned to UNINED STATES region
+
+SELECT * FROM employees
+WHERE region_id IN (SELECT region_id FROM regions WHERE Country = 'United States')
+
+-- Return all region_id greater then UNited States region id
+SELECT * FROM employees
+WHERE region_id > ANY (SELECT region_id FROM regions WHERE Country = 'United States')
+
+															   
+-- Return any region_id greater then UNited States region id
+SELECT * FROM employees
+WHERE region_id > ALL (SELECT region_id FROM regions WHERE Country = 'United States')
+
+															   
+--Write a query that returns all of the employees those work in the kids division 
+--AND the dates at which those employees were hired is greater than all of the hire_dates of the employees
+--who work in maintanance dept.
+
+SELECt * 
+FROM employees
+WHERE department = ANY (SELECT department 
+						FROM departments 
+						WHERE division = 'Kids') 
+AND hire_date > ALL(SELECT hire_date 
+					FROM employees
+					WHERE department = 'Maintanance')
+
+--- Give the salaries that appear more frequently
+--If salary apprears frequently then give the highest salary
+SELECT salary from 
+(SELECT salary, COUNT(*) 
+FROM employees
+GROUP BY salary
+ORDER BY COUNT(*) DESC, salary DESC
+LIMIT 1) a
+
+-- Using ALL
+SELECT salary
+FROM employees
+GROUP BY salary
+HAVING count(*) >= ALL(SELECT count(*) FROM employees
+					  GROUP BY salary)
+ORDER BY salary desc
+LIMIT 1
+
+
+																   
+																   
+																   
+																   
+																   
+																   
+
+
+
+
